@@ -50,7 +50,6 @@
       }
     };
 
-
     return {
       saveToken : saveToken,
       getToken : getToken,

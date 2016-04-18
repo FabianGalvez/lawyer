@@ -13,7 +13,6 @@ require('./app_api/config/passport');
 //var routes = require('./app_server/routes/index');
 var routesApi = require('./app_api/routes/index');
 var routes = require('./routes/index');
-//var users = require('./routes/users');
 
 var app = express();
 
@@ -28,19 +27,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'app_client')));
+//app.use(express.static(path.join(__dirname, 'app_client')));
 
 app.use(passport.initialize());
 
 app.use('/', routes);
 app.use('/api', routesApi);
 
-app.use(function(req, res) {
-  res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
-});
-
-
-//app.use('/users', users);
+//app.use(function(req, res) {
+//  res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
+//});
 
 // error handlers
 // Catch unauthorised errors
