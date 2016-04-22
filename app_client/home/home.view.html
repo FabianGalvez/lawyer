@@ -1,0 +1,14 @@
+angular
+  .module('loc8rApp')
+  .controller('homeCtrl', homeCtrl);
+
+  function homeCtrl ($scope) {
+    $scope.pageHeader = {
+      title: 'Lawyer',
+      strapline: 'Tu Asistente en cada Proceso!'
+    };
+
+    $scope.sidebar = {
+      content: "Tu Asistente en cada Proceso"
+    };
+  }

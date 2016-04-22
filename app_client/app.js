@@ -3,6 +3,8 @@ angular.module('lawyerApp', ['ngRoute']);
 function config ($routeProvider) {
   $routeProvider
     .when('/', {
+      templateUrl: 'home/home.view.html'
+      controller: 'homeCtrl'
     })
     .when('/register', {
       templateUrl: '/auth/register/register.view.html',
