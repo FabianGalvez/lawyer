@@ -109,9 +109,7 @@ module.exports.actividadesUpdateOne = function (req, res) {
     function(err, proceso) {
       var thisActividad;
       if (!Proceso) {
-        sendJsonResponse(res, 404, {
-          sendJsonResponse(res, 404, {"message": "Proceso no registrado"});
-        });
+          sendJsonResponse(res, 404, {"message": "Proceso no registrado"});        
         return;
       } else if (err) {
         sendJsonResponse(res, 400, err);

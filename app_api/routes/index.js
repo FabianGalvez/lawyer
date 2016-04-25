@@ -24,8 +24,8 @@ router.delete('/procesos/:procesoid', ctrlProcesos.procesosDeleteOne);
 
 // Actividades
 router.post('/procesos/:procesoid/actividades', ctrlActividades.actividadesCreate);
-router.get('/procesos/:procesoid/actividades/:reviewid',ctrlActividades.actividadesReadOne);
-router.put('/procesos/:procesoid/actividades/:reviewid',ctrlActividades.actividadesUpdateOne);
-router.delete('/procesos/:procesoid/actividades/:reviewid',ctrlActividades.actividadesDeleteOne);
+router.get('/procesos/:procesoid/actividades/:actividadid',ctrlActividades.actividadesReadOne);
+router.put('/procesos/:procesoid/actividades/:actividadid',ctrlActividades.actividadesUpdateOne);
+router.delete('/procesos/:procesoid/actividades/:actividadid',ctrlActividades.actividadesDeleteOne);
 
 module.exports = router;

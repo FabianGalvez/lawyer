@@ -1,14 +1,32 @@
-angular
-  .module('loc8rApp')
-  .controller('homeCtrl', homeCtrl);
+<navigation></navigation>
 
-  function homeCtrl ($scope) {
-    $scope.pageHeader = {
-      title: 'Lawyer',
-      strapline: 'Tu Asistente en cada Proceso!'
-    };
+<div class="container">
 
-    $scope.sidebar = {
-      content: "Tu Asistente en cada Proceso"
-    };
-  }
+  <page-header content="vm.pageHeader"></page-header>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
+      <label for="filter">Procesos</label>
+        <input id="filter" type="text", name="filter", ng-model="textFilter">
+          <div class="error">{{ vm.message }}</div>
+          <div class="row list-group">
+            <div class="col-xs-12 list-group-item" ng-repeat="proceso in
+            vm.data.procesos">
+            <p class="address">{{ proceso.numero }}</p>
+            <p>
+              <span class="label label-warning label-facility" ngrepeat="
+              actividad in proceso.actividades">
+              {{ actividad }}
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-4">
+      <p class="lead">{{ vm.sidebar.content }}</p>
+    </div>
+  </div>
+
+  <footer-generic></footer-generic>
+</div>
