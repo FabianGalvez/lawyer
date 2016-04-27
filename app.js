@@ -12,11 +12,12 @@ var fs = require('fs');
 require('./app_api/models/db');
 require('./app_api/config/passport');
 
-//var routes = require('./app_server/routes/index');
-var routesApi = require('./app_api/routes/index');
-//var routes = require('./routes/index');
-
 var app = express();
+
+//var routes = require('./app_server/routes/index');
+//var routesApi = require('./app_api/routes') (app);
+//require('./app_api/routes');
+//var routes = require('./routes/index');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -49,7 +50,7 @@ app.use(express.static(path.join(__dirname, 'app_client')));
 app.use(passport.initialize());
 
 //app.use('/', routes);
-app.use('/api', routesApi);
+//app.use('/api', routesApi);
 
 app.use(function(req, res) {
   res.sendFile(path.join(__dirname, 'app_client', 'index.html'));

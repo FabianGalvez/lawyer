@@ -1,6 +1,6 @@
 (function () {
   angular
-    .module('loc8rApp')
+    .module('lawyerApp')
     .directive('pageHeader', pageHeader);
 
     function pageHeader () {

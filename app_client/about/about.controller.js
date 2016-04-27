@@ -11,8 +11,7 @@
       };
 
       vm.main = {
-        content: 'Lawyer fue creado para ayudar a no perder ni una sola acción
-        en los procesos legales '        
+        content: 'Lawyer fue creado para ayudar a no perder ni una sola acción en cada proceso legal! '
       };
     }
 })();

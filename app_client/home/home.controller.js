@@ -1,19 +1,19 @@
 ( function () {
 
-if (window.location.pathname !== '/') {
-  window.location.href = '/#' + window.location.pathname;
-}
+//if (window.location.pathname !== '/') {
+//  window.location.href = '/#' + window.location.pathname;
+//}
 
 angular
   .module('lawyerApp')
   .controller('homeCtrl', homeCtrl);
 
-homeCtrl.$inject = ['$scope'];
+//homeCtrl.$inject = ['$scope'];
 function homeCtrl ($scope) {
   var vm = this;
   vm.pageHeader = {
     title: 'Lawyer',
-    strapline: 'Tu Asistente en cada Proceso!'
+    strapline: 'Tu Asistente en cada Proceso Judicial!'
   };
 
   vm.sidebar = {
