@@ -17,7 +17,7 @@ function homeCtrl ($scope) {
   };
 
   vm.sidebar = {
-    content: "Tu Asistente en cada Proceso"
+    content: ""
   };
 
   vm.showError = function (error) {
