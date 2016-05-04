@@ -1,5 +1,6 @@
 var mongoose = require( 'mongoose' );
 var readLine = require ("readline");
+var gracefulShutdown;
 
 if (process.platform === "win32"){
     var rl = readLine.createInterface ({
@@ -12,6 +13,7 @@ if (process.platform === "win32"){
 }
 
 var dbURI = 'mongodb://localhost/Lawyer';
+
 mongoose.connect(dbURI);
 
 mongoose.connection.on('connected', function () {
@@ -24,7 +26,7 @@ mongoose.connection.on('disconnected', function () {
   console.log('Mongoose disconnected');
 });
 
-var gracefulShutdown = function (msg, callback) {
+gracefulShutdown = function (msg, callback) {
     mongoose.connection.close(function () {
       console.log('Mongoose disconnected through ' + msg);
       callback();

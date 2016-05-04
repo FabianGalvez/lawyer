@@ -9,24 +9,23 @@
       <label for="filter">Procesos</label>
         <input id="filter" type="text", name="filter", ng-model="textFilter">
           <div class="error">{{ vm.message }}</div>
+
           <div class="row list-group">
-            <div class="col-xs-12 list-group-item" ng-repeat="proceso in
-            vm.data.procesos">
-            <p class="address">{{ proceso.numero }}</p>
-            <p>
-              <span class="label label-warning label-facility" ngrepeat="
-              actividad in proceso.actividades">
-              {{ actividad }}
-            </span>
-          </p>
+            <div class="col-xs-12 list-group-item" ng-repeat="proceso in vm.data.procesos">
+              <h4>
+                <a href="#/proceso/{{ proceso._id }}">{{ proceso.accion }}</a>
+              <h4>
+              <span class="label label-warning label-facility" ngrepeat="actividad in proceso.actividades">
+                {{ actividad }}</p>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+          <p class="lead">{{ vm.sidebar.content }}</p>
         </div>
       </div>
-    </div>
-
-    <div class="col-xs-12 col-sm-4">
-      <p class="lead">{{ vm.sidebar.content }}</p>
-    </div>
-  </div>
 
   <footer-generic></footer-generic>
 

@@ -1,15 +1,41 @@
 (function () {
+
   angular
     .module('lawyerApp')
     .service('authentication', authentication);
 
-  authentication.$inject = ['$window'];
-  function authentication ($window) {
+  authentication.$inject = ['$http','$window'];
+  function authentication ($http, $window) {
+
     var saveToken = function (token) {
       $window.localStorage['lawyer-token'] = token;
     };
+
     var getToken = function () {
       return $window.localStorage['lawyer-token'];
+    };
+
+    var isLoggedIn = function() {
+      var token = getToken();
+
+      if(token){
+        var payload = JSON.parse($window.atob(token.split('.')[1]));
+        //return payload.exp > Date.now() / 1000;
+          return false;
+      } else {
+        return false;
+      }
+    };
+
+    var currentUser = function() {
+      if(isLoggedIn()){
+        var token = getToken();
+        var payload = JSON.parse($window.atob(token.split('.')[1]));
+        return {
+          email : payload.email,
+          name : payload.name
+        };
+      }
     };
 
     var register = function(user) {
@@ -28,36 +54,15 @@
       $window.localStorage.removeItem('lawyer-token');
     };
 
-    var isLoggedIn = function() {
-      var token = getToken();
-
-      if(token){
-        var payload = JSON.parse($window.atob(token.split('.')[1]));
-        return payload.exp > Date.now() / 1000;
-      } else {
-        return false;
-      }
-    };
-
-    var currentUser = function() {
-      if(isLoggedIn()){
-        var token = getToken();
-        var payload = JSON.parse($window.atob(token.split('.')[1]));
-        return {
-          email : payload.email,
-          name : payload.name
-        };
-      }
-    };
-
     return {
+      currentUser : currentUser,
       saveToken : saveToken,
       getToken : getToken,
+      isLoggedIn : isLoggedIn,
       register : register,
       login : login,
       logout : logout,
-      isLoggedIn : isLoggedIn,
-      currentUser : currentUser
     };
   }
+
 })();

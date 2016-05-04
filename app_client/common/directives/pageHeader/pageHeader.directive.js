@@ -1,4 +1,5 @@
 (function () {
+
   angular
     .module('lawyerApp')
     .directive('pageHeader', pageHeader);

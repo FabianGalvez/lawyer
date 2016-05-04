@@ -1,10 +1,10 @@
 (function () {
+
   angular
     .module('lawyerApp')
     .controller('registerCtrl', registerCtrl);
 
     registerCtrl.$inject = ['$location','authentication'];
-
     function registerCtrl($location, authentication) {
       var vm = this;
 
@@ -23,7 +23,7 @@
       vm.onSubmit = function () {
         vm.formError = "";
         if (!vm.credentials.name || !vm.credentials.email || !vm.credentials.password) {
-          vm.formError = "All fields required, please try again";
+          vm.formError = "Se requieren todos los campos, trate de nuevo";
           return false;
         } else {
           vm.doRegister();
@@ -32,7 +32,6 @@
 
       vm.doRegister = function() {
         vm.formError = "";
-
         authentication
           .register(vm.credentials)
           .error(function(err){
@@ -42,7 +41,8 @@
             $location.search('page', null);
             $location.path(vm.returnPage);
           });
-      }
+      };
 
     }
+    
 })();

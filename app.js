@@ -5,19 +5,20 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var passport = require('passport');
 var uglifyJs = require("uglify-js");
 var fs = require('fs');
+var passport = require('passport');
 
 require('./app_api/models/db');
 require('./app_api/config/passport');
 
-var app = express();
-
+//var routes = require('./app_server/routes/index');
 var routesApi = require('./app_api/routes/index') ;
 
+var app = express();
+
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'jade');
 
 //var appClientFiles = [

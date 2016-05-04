@@ -1,19 +1,18 @@
 (function () {
+
   angular
     .module('lawyerApp')
-    .controller('registerCtrl', registerCtrl);
+    .controller('loginCtrl', loginCtrl);
 
-    registerCtrl.$inject = ['$location','authentication'];
-
-    function registerCtrl($location, authentication) {
+    loginCtrl.$inject = ['$location','authentication'];
+    function loginCtrl($location, authentication) {
       var vm = this;
 
       vm.pageHeader = {
-        title: 'Crear una nueva cuenta'
+        title: 'Ingresar a Lawyer'
       };
 
       vm.credentials = {
-        name : "",
         email : "",
         password : ""
       };
@@ -22,19 +21,18 @@
 
       vm.onSubmit = function () {
         vm.formError = "";
-        if (!vm.credentials.name || !vm.credentials.email || !vm.credentials.password) {
-          vm.formError = "All fields required, please try again";
+        if (!vm.credentials.email || !vm.credentials.password) {
+          vm.formError = "Se requieren todos los campos, trate de nuevo";
           return false;
         } else {
-          vm.doRegister();
+          vm.doLogin();
         }
       };
 
-      vm.doRegister = function() {
+      vm.doLogin = function() {
         vm.formError = "";
-
         authentication
-          .register(vm.credentials)
+          .login(vm.credentials)
           .error(function(err){
             vm.formError = err;
           })
@@ -42,7 +40,7 @@
             $location.search('page', null);
             $location.path(vm.returnPage);
           });
-      }
-
+      };
     }
+    
 })();

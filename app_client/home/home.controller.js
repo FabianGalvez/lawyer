@@ -1,30 +1,31 @@
 ( function () {
 
-//if (window.location.pathname !== '/') {
-//  window.location.href = '/#' + window.location.pathname;
-//}
+  angular
+    .module('lawyerApp')
+    .controller('homeCtrl', homeCtrl);
 
-angular
-  .module('lawyerApp')
-  .controller('homeCtrl', homeCtrl);
+  homeCtrl.$inject = ['$scope'];
+  function homeCtrl ($scope) {
 
-//homeCtrl.$inject = ['$scope'];
-function homeCtrl ($scope) {
-  var vm = this;
-  vm.pageHeader = {
-    title: 'Lawyer',
-    strapline: 'Tu Asistente en cada Proceso Judicial!'
-  };
+    if (window.location.pathname !== '/') {
+      window.location.href = '/#' + window.location.pathname;
+    }
 
-  vm.sidebar = {
-    content: ""
-  };
+    var vm = this;
+    console.log(window.location);
+    vm.pageHeader = {
+      title: 'Lawyer',
+      strapline: 'Tu Asistente en cada Proceso Judicial!'
+    };
+    vm.sidebar = {
+      content: ""
+    };
 
-  vm.showError = function (error) {
-    $scope.$apply(function() {
-      vm.message = error.message;
-    });
-  };
+    vm.showError = function (error) {
+      $scope.$apply(function() {
+        vm.message = error.message;
+      });
+    };
 }
 
 }) ();

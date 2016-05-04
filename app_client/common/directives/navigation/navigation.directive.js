@@ -1,13 +1,15 @@
 (function () {
+
   angular
     .module('lawyerApp')
     .directive('navigation', navigation);
 
     function navigation () {
       return {
-        restrict: 'EA',
+        restrict: 'E',
         templateUrl: '/common/directives/navigation/navigation.template.html',
-        controller: 'navigationCtrl as navvm'
+        controller: 'navigationCtrl as navvm'        
       };
     }
+
 })();

@@ -20,7 +20,9 @@ module.exports.register = function(req, res) {
 
   user.name = req.body.name;
   user.email = req.body.email;
+
   user.setPassword(req.body.password);
+
   user.save(function(err) {
     var token;
     if (err) {
@@ -33,7 +35,6 @@ module.exports.register = function(req, res) {
     }
   });
 };
-
 
 module.exports.login = function(req, res) {
   if(!req.body.email || !req.body.password) {
@@ -58,5 +59,4 @@ module.exports.login = function(req, res) {
       sendJSONresponse(res, 401, info);
     }
   })(req, res);
-
 };
