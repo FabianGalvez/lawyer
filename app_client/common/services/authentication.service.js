@@ -23,7 +23,7 @@
         //return payload.exp > Date.now() / 1000;
           return false;
       } else {
-        return false;
+        return fa;
       }
     };
 
@@ -44,7 +44,7 @@
       });
     };
 
-    var login = function(user) {
+          var login = function(user) {
       return $http.post('/api/login', user).success(function(data) {
         saveToken(data.token);
       });
